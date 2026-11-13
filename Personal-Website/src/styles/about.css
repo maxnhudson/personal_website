@@ -16,6 +16,7 @@
       min-width: 0;
       vertical-align: bottom;
       object-fit: cover;
+      border-radius: 10px;
     }
   .pro-txt{
       flex: 1 1 300px;

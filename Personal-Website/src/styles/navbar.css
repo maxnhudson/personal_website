@@ -1,37 +1,97 @@
-.navbar{
-  position: sticky;
-  top:0;
-  background: var(--bg);
-  z-index: 1000;
-}
-.navbar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex; /* Aligns list items horizontally */
-  gap: 1rem;
-}
-
-/* Stretch each nav item to fill the width equally */
-.navbar li {
-  flex: 1;
-  text-align: center;
-}
-
-/* Style the individual links */
-.navbar a {
-  display: block;
-  width: 100%;
+/* --- Desktop Navbar (> 768px) --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--code-bg) ;
   color: var(--text);
-  text-align: center;
-  padding: 14px 20px;
-  text-decoration: none; /* Removes the underline */
-  transition: background-color 0.3s;
+}
+.logo{
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #6dafc8;
 }
 
-/* Add a hover effect */
-.navbar a:hover {
-  background-color: var(--accent);
+.nav-drawer {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-drawer a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: bold;
+  padding: .2rem;
+}
+
+.nav-drawer a:hover {
   color: var(--text-h);
+  background: var(--accent);
+  border-radius: 8px;
+
 }
 
+.hamburger,
+.close-btn,
+.backdrop {
+  display: none;
+}
+
+/* --- Mobile Drawer (<= 768px) --- */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .nav-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100dvh;
+    width: 260px;
+    background: var(--code-bg);
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    gap: 1.25rem;
+    z-index: 100;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-drawer.open {
+    transform: translateX(0);
+  }
+
+  .close-btn {
+    display: block;
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 99;
+  }
+
+  .backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
