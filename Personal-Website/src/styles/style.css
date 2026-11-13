@@ -30,6 +30,21 @@
   }
 }
 
+/* Space out sections so the page isn't cluttered */
+section {
+  margin-bottom: 5rem;
+}
+section:last-child {
+  margin-bottom: 0;
+}
+
+/* Side margins on full-screen desktop windows */
+@media (min-width: 1025px) {
+  body {
+    padding-inline: clamp(2rem, 6vw, 6rem);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
